@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>log日志划分 | 懵懵技术博客</title>
+<title>android获取当前运行Activity名字的方法 | 懵懵技术博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="懵懵技术博客" type="application/atom+xml">
@@ -118,9 +118,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="log日志划分">
+        <h1 id="android获取当前运行Activity名字的方法">
             
-	            log日志划分
+	            android获取当前运行Activity名字的方法
             
         </h1>
         <div class="post-meta">
@@ -140,10 +140,6 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/log 等级" title='log 等级'>
-                        log 等级
-                    </a>
-                
             
         </span>
     </span>
@@ -153,7 +149,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/12/10</span>
+            <span class="date-meta">2018/12/12</span>
         </span>
         
     
@@ -164,23 +160,24 @@
     </div>
     
     <div class="post-body post-content">
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Android 中的日志工具类是 Log (android.util.log), 这个类中提供了如下 5 个方法来供我们打印日志</p>
-<blockquote>
-<p>Log.v() <code>verbose (冗长的，啰唆的，累赘的)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用于打印那些最为琐碎的、意义最小的日志信息。对应级别 verbose (冗长的，啰唆的，累赘的), 是 Android 日志里面级别最低的一种.</span><br></pre></td></tr></table></figure></p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
+<p>当融合一个新的项目的时候，往往要知道某个界面对应哪个 <code>Activity</code></p>
 </blockquote>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><ul>
+<li><p>第一种:要方便一点(Service中无法使用)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getRunningActivityName</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        String contextString = context.toString();  </span><br><span class="line">        <span class="keyword">return</span> contextString.substring(contextString.lastIndexOf(<span class="string">"."</span>) + <span class="number">1</span>, contextString.indexOf(<span class="string">"@"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二种: 要稍微麻烦一点，需要一个权限（推荐）</p>
 <blockquote>
-<p>Log.d() <code>debug (调试)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用于打印一些调试信息,这些信息对你调试程序和分析问题应该是有帮助的，对应级别 debug,比 verbose 高一级</span><br></pre></td></tr></table></figure></p>
+<p>在配置清单 <code>AndroidManifest.xml</code> 填写权限</p>
 </blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot; /&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Log.i() <code>info (信息)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用于打印一些比较重要的数据，这些数据应该是你非常想看到的、可以帮你分析用户行为数据。对应级别 info , 比 deug 高一级</span><br></pre></td></tr></table></figure></p>
+<p>在java清单上填写权限</p>
 </blockquote>
-<blockquote>
-<p>Log.w() <code>warn (警告)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用于打印一些警告信息，提示程序在这个地方可能会有潜在的风险，最好去修复一下这些出现警告的地方，对应级别 warn，比 info 高一级</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>Log.e() <code>error (错误)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用于打印程序中的错误信息， 比如程序进入到了 catch 语句当中，当有错误信息打印出来的时候，一般都代表你的程序出现严重问题了，必须尽快修复,对应级别 error,比 warn 高以及</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getRunningActivityName</span><span class="params">()</span></span>&#123;          </span><br><span class="line">        ActivityManager activityManager=(ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);  </span><br><span class="line">        String runningActivity=activityManager.getRunningTasks(<span class="number">1</span>).get(<span class="number">0</span>).topActivity.getClassName();  </span><br><span class="line">        <span class="keyword">return</span> runningActivity; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
     
         <div class="reward">
@@ -213,15 +210,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/12/12/android获取当前运行Activity名字的方法/" class="pre-post btn btn-default" title='android获取当前运行Activity名字的方法'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">android获取当前运行Activity名字的方法</span>
-        </a>
     
-    
-        <a href="/2018/11/25/android-pdf-大全/" class="next-post btn btn-default" title='android pdf 大全'>
+        <a href="/2018/12/10/log日志大全/" class="next-post btn btn-default" title='log日志划分'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">android pdf 大全</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">log日志划分</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -264,7 +256,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li></ol>
         
     </div>
 </aside>
