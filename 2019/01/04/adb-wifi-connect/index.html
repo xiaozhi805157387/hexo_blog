@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>android获取当前运行Activity名字的方法 | 懵懵技术博客</title>
+<title>android wifi调试(无需root) | 懵懵技术博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="懵懵技术博客" type="application/atom+xml">
@@ -118,9 +118,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="android获取当前运行Activity名字的方法">
+        <h1 id="android wifi调试(无需root)">
             
-	            android获取当前运行Activity名字的方法
+	            android wifi调试(无需root)
             
         </h1>
         <div class="post-meta">
@@ -140,6 +140,10 @@
         <span class="tags-meta">
             
                 
+                    <a href="/tags/调试 无需root android" title='调试 无需root android'>
+                        调试 无需root android
+                    </a>
+                
             
         </span>
     </span>
@@ -149,7 +153,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/12/12</span>
+            <span class="date-meta">2019/01/04</span>
         </span>
         
     
@@ -160,24 +164,14 @@
     </div>
     
     <div class="post-body post-content">
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
-<p>当融合一个新的项目的时候，往往要知道某个界面对应哪个 <code>Activity</code></p>
+        <blockquote>
+<p>如何使用 <code>wifi</code>调试呢</p>
 </blockquote>
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><ul>
-<li><p>第一种:要方便一点(Service中无法使用)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getRunningActivityName</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        String contextString = context.toString();  </span><br><span class="line">        <span class="keyword">return</span> contextString.substring(contextString.lastIndexOf(<span class="string">"."</span>) + <span class="number">1</span>, contextString.indexOf(<span class="string">"@"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第二种: 要稍微麻烦一点，需要一个权限（推荐）</p>
-<blockquote>
-<p>在配置清单 <code>AndroidManifest.xml</code> 填写权限</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot; /&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在java清单上填写权限</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">getRunningActivityName</span><span class="params">()</span></span>&#123;          </span><br><span class="line">        ActivityManager activityManager=(ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);  </span><br><span class="line">        String runningActivity=activityManager.getRunningTasks(<span class="number">1</span>).get(<span class="number">0</span>).topActivity.getClassName();  </span><br><span class="line">        <span class="keyword">return</span> runningActivity; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="一、确定环境"><a href="#一、确定环境" class="headerlink" title="一、确定环境"></a>一、确定环境</h4><p>首先的确定 <code>电脑</code> 和 <code>手机</code> 出于同一个网段 (wifi)</p>
+<h4 id="二、执行tcpip-调试模式"><a href="#二、执行tcpip-调试模式" class="headerlink" title="二、执行tcpip 调试模式"></a>二、执行<code>tcpip</code> 调试模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; adb tcpip 5555</span><br><span class="line">restarting in TCP mode port: 5555</span><br></pre></td></tr></table></figure>
+<h4 id="三、连接手机地址"><a href="#三、连接手机地址" class="headerlink" title="三、连接手机地址"></a>三、连接手机地址</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">### 例 adb connect [ip地址]</span><br><span class="line">&gt; adb connect 192.168.1.161 //我这里是测试机地址是192.168.1.161</span><br><span class="line">connected to 192.168.1.161:5555</span><br></pre></td></tr></table></figure>
+<p>Ok，这就是wifi调试的步骤。挺简单的 先记录一下~</p>
+
     </div>
     
         <div class="reward">
@@ -210,15 +204,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/01/04/adb-wifi-connect/" class="pre-post btn btn-default" title='android wifi调试(无需root)'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">android wifi调试(无需root)</span>
-        </a>
     
-    
-        <a href="/2018/12/10/log日志大全/" class="next-post btn btn-default" title='log日志划分'>
+        <a href="/2018/12/12/android获取当前运行Activity名字的方法/" class="next-post btn btn-default" title='android获取当前运行Activity名字的方法'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">log日志划分</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">android获取当前运行Activity名字的方法</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -261,7 +250,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、确定环境"><span class="toc-text">一、确定环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、执行tcpip-调试模式"><span class="toc-text">二、执行tcpip 调试模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、连接手机地址"><span class="toc-text">三、连接手机地址</span></a></li></ol>
         
     </div>
 </aside>
