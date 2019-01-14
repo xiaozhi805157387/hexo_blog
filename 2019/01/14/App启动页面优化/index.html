@@ -1,0 +1,361 @@
+<!DOCTYPE HTML>
+<html lang="ch">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="懵懵技术博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://www.sunjingzhi.com">
+    <!--SEO-->
+
+
+
+<meta name="keywords" content="技术博客,懵懵,个人技术网站"/>
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>App启动页面优化 | 懵懵技术博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="懵懵技术博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='懵懵'>
+            <img src="/img/head.png" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.sunjingzhi.com">懵懵技术博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="App启动页面优化">
+            
+	            App启动页面优化
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/01/14</span>
+        </span>
+        
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="存在白屏问题"><a href="#存在白屏问题" class="headerlink" title="存在白屏问题"></a>存在白屏问题</h4><h5 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h5><ul>
+<li>android app启动页面黑屏的问题，android开发app启动时若没有做特殊处理的话，会出现一瞬间的白屏现象。</li>
+<li>即使你启动页界面就加载一个布局，不做其他耗时处理，貌似也会出现一瞬间的白屏问题。注意，有些地方也称黑屏，主要是看你给app设置的style样式</li>
+<li>当从桌面 Launcher 的小图标点击冷启动一个 App 的时候，程序需要进行一些基本的初始化操作，例如在Application 或者SplashActivity中做了很多耗时操作，例如初始化第三方SDK等,当手机性能不好，配置不高时，该现象尤其明显。</li>
+</ul>
+<h5 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h5><ul>
+<li>当系统启动一个APP时，zygote进程会首先创建一个新的进程去运行这个APP，但是进程的创建是需要时间的，在创建完成之前，界面是呈现假死状态，于是系统根据你的manifest文件设置的主题颜色的不同来展示一个白屏或者黑屏。而这个黑（白）屏正式的称呼应该是Preview Window，即预览窗口。</li>
+<li>实际上就是是activity默认的主题中的android:windowBackground为白色或者黑色导致的。</li>
+<li>总结来说启动顺序就是：app启动——Preview Window(也称为预览窗口)——启动页</li>
+</ul>
+<h4 id="解决白屏的办法"><a href="#解决白屏的办法" class="headerlink" title="解决白屏的办法"></a>解决白屏的办法</h4><h5 id="解决方案分析"><a href="#解决方案分析" class="headerlink" title="解决方案分析"></a>解决方案分析</h5><ul>
+<li>Android在选择展示黑屏或者白屏的时候，是根据你设定的主题而不同的，也就是说，虽然你的代码没有被执行，你的配置文件却被提前读取了，用来作为展示Preview Window界面的依据。所以，解决方案的切入口就是整个APP的manifest文件，更确切的说应该是主题配置文件。</li>
+<li>设置配置文件style样式中的windowBackground这个属性来显示一张背景图还有一个效果就是启动应用程序会感觉非常快，而且与加载MainActivity的contentView是异步的。</li>
+</ul>
+<h5 id="第一种解决方案"><a href="#第一种解决方案" class="headerlink" title="第一种解决方案"></a>第一种解决方案</h5><blockquote>
+<p>解决办法：给当前启动页添加一个有背景的style样式</p>
+<ul>
+<li>设置style样式如下 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=<span class="string">"SplashTheme"</span> parent=<span class="string">"AppTheme"</span>&gt;</span><br><span class="line">    &lt;item name="android:windowBackground"&gt;@mipmap/splash&lt;/item&gt;</span><br><span class="line">    &lt;item name="android:statusBarColor" tools:ignore="NewApi"&gt;@color/white&lt;/item&gt;</span><br><span class="line">    &lt;item name="android:windowIsTranslucent"&gt;true&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>注意，在清单文件中</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=<span class="string">".SplashActivity"</span></span><br><span class="line">    android:theme=<span class="string">"@style/SplashTheme"</span>&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span><br><span class="line">        &lt;category android:name=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>经过处理之后App启动时就不会出现一瞬间白屏的效果<br><code>将主题设置到启动的Activity的主题中，windowBackground就是即将展示的preview window。其中splash可以是一整张图片，它也可以是一个能解析出图片资源的XML文件。</code></p>
+</li>
+</ul>
+<blockquote>
+<p>该方案注意要点 </p>
+<ul>
+<li>给Preview Window设置的背景图如果不做处理，图片就会一直存在于内存中，所以，当我们进入到欢迎页的时候，不要忘了把背景图设置为空 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//将window的背景图设置为空</span></span><br><span class="line">    getWindow().setBackgroundDrawable(<span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>这样操作如何屏幕适配呢？</p>
+<ul>
+<li>这样通过样式style设置SplashActivity加载图，不能像imageView那样可以设置缩放功能，因此可以采用.9图片。</li>
+<li>以前有开发者采用我的这个建议，直接设置图，没有做适配，也无伤大雅，具体要看UI要求呢！</li>
+</ul>
+</blockquote>
+<h5 id="第二种解决方案"><a href="#第二种解决方案" class="headerlink" title="第二种解决方案"></a>第二种解决方案</h5><blockquote>
+<p>禁止加载Preview Window，具体做法如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=<span class="string">"SplashTheme"</span> parent=<span class="string">"@style/Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><br><span class="line">    &lt;item name="android:windowDisablePreview"&gt;true&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>设定为启动的Activity的主题，即可禁止Preview Window，当然，也有人通过把preview window设置为全透明，也达成了类似的效果。个人感觉这种方法没有第一种好！</p>
+<blockquote>
+<p>windowDisablePreview的作用 </p>
+</blockquote>
+<p><code>通过设置android:windowDisablePreview属性，禁用窗口的预览动画，在SplashActivity显示之前，系统永远不会使用窗口的主题来显示它的预览，这也保证了不会出现白屏或者黑屏。但是，与设置android:windowIsTranslucent属性一样，如果在SplashActivity启动的时候，有过多复杂的操作，就会出现在手机中点击了应用程序的图标，但过n秒才会打开应用程序不好的卡顿体验效果。</code></p>
+<blockquote>
+<p>该方案是否有缺点？ </p>
+</blockquote>
+<p><code>种方法有个小缺点，就是点击后短暂的那几百毫秒没有反应，就好像“假死”了一样，过了一会儿才跳出我们应用程序的第一个Activity，如果你不想让你的 App 有这个短暂“假死”时间，建议使用第一种方法。</code></p>
+<h4 id="Application启动速度优化"><a href="#Application启动速度优化" class="headerlink" title="Application启动速度优化"></a>Application启动速度优化</h4><ul>
+<li>尽量不将一些业务逻辑放于Application中；</li>
+<li>Application尽量不以静态变量的方式保存应用数据；</li>
+<li>若App的大小不是特别大无需使用dex分包方案；</li>
+<li>在Application中关于文件，数据库等耗时的操作尽量放到IntentService线程中处理</li>
+<li>不要做有关于循环的操作</li>
+</ul>
+<h4 id="启动页面屏蔽返回按键"><a href="#启动页面屏蔽返回按键" class="headerlink" title="启动页面屏蔽返回按键"></a>启动页面屏蔽返回按键</h4><blockquote>
+<p>一般App中都会在启动页面执行一些初始化配置等，所以这时候启动页加载时不希望用户通过按下返回按键退出App，因而可以在启动页中屏蔽返回按键，这里简单的介绍一下具体的实现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Activity屏蔽物理返回按钮</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> keyCode</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> event</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.onKeyDown(keyCode, event);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+    </div>
+    
+        <div class="reward">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/blog_zhanshang.png"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赏懵懵一杯咖啡可好</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/01/04/adb-wifi-connect/" class="next-post btn btn-default" title='android wifi调试(无需root)'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">android wifi调试(无需root)</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'iHer5OEJ1NSPaqmT19GDyNFT-gzGzoHsz',
+            appKey: '24gTxwqkConaIDfJ61p0QVnn',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'ch'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#存在白屏问题"><span class="toc-text">存在白屏问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#问题分析"><span class="toc-text">问题分析</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决白屏的办法"><span class="toc-text">解决白屏的办法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#解决方案分析"><span class="toc-text">解决方案分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第一种解决方案"><span class="toc-text">第一种解决方案</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第二种解决方案"><span class="toc-text">第二种解决方案</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Application启动速度优化"><span class="toc-text">Application启动速度优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动页面屏蔽返回按键"><span class="toc-text">启动页面屏蔽返回按键</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
